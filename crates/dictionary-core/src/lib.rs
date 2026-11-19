@@ -21,6 +21,33 @@ fn key(term: &str) -> String {
     term.trim().to_lowercase()
 }
 
+fn search_key(term: &str) -> String {
+    key(term)
+        .chars()
+        .filter_map(|ch| {
+            Some(match ch {
+                'à' | 'á' | 'ả' | 'ã' | 'ạ' | 'â' | 'ầ' | 'ấ' | 'ẩ' | 'ẫ' | 'ậ' | 'ă' | 'ằ'
+                | 'ắ' | 'ẳ' | 'ẵ' | 'ặ' | 'ä' | 'å' => 'a',
+                'ç' => 'c',
+                'đ' => 'd',
+                'è' | 'é' | 'ẻ' | 'ẽ' | 'ẹ' | 'ê' | 'ề' | 'ế' | 'ể' | 'ễ' | 'ệ' | 'ë' => {
+                    'e'
+                }
+                'ì' | 'í' | 'ỉ' | 'ĩ' | 'ị' | 'î' | 'ï' => 'i',
+                'ñ' => 'n',
+                'ò' | 'ó' | 'ỏ' | 'õ' | 'ọ' | 'ô' | 'ồ' | 'ố' | 'ổ' | 'ỗ' | 'ộ' | 'ơ' | 'ờ'
+                | 'ớ' | 'ở' | 'ỡ' | 'ợ' | 'ö' => 'o',
+                'ù' | 'ú' | 'ủ' | 'ũ' | 'ụ' | 'ư' | 'ừ' | 'ứ' | 'ử' | 'ữ' | 'ự' | 'û' | 'ü' => {
+                    'u'
+                }
+                'ỳ' | 'ý' | 'ỷ' | 'ỹ' | 'ỵ' | 'ÿ' => 'y',
+                '\u{0300}'..='\u{036f}' => return None,
+                _ => ch,
+            })
+        })
+        .collect()
+}
+
 fn entry(line: &str) -> Option<Entry> {
     let mut fields = line.split('\t').map(str::trim);
     let term = fields.next()?;
@@ -112,16 +139,25 @@ impl Library {
 
     pub fn search(&self, term: &str, favorites_only: bool) -> Vec<&Entry> {
         let query = key(term);
-        let matches = |(name, _): &(&String, &Entry)| {
-            (!favorites_only || self.favorites.contains(*name)) && name.contains(&query)
-        };
-        let mut results: Vec<_> = starter()
-            .iter()
-            .chain(&self.imported)
-            .filter(matches)
-            .collect();
-        results.sort_unstable_by_key(|(name, _)| (!name.starts_with(&query), *name));
-        results.into_iter().map(|(_, entry)| entry).collect()
+        let folded_query = search_key(&query);
+        let mut results = Vec::new();
+        for (name, item) in starter().iter().chain(&self.imported) {
+            if favorites_only && !self.favorites.contains(name) {
+                continue;
+            }
+            let folded = search_key(name);
+            if !name.contains(&query) && !folded.contains(&folded_query) {
+                continue;
+            }
+            results.push((
+                !name.starts_with(&query),
+                !folded.starts_with(&folded_query),
+                name,
+                item,
+            ));
+        }
+        results.sort_unstable_by_key(|(exact, prefix, name, _)| (*exact, *prefix, *name));
+        results.into_iter().map(|(_, _, _, item)| item).collect()
     }
 
     pub fn favorited(&self, term: &str) -> bool {
@@ -206,6 +242,7 @@ mod tests {
         assert!(lib.get("kiến thức").is_none());
         lib.apply(draft);
         assert_eq!(lib.search("KIẾN", false)[0].definition, "knowledge");
+        assert_eq!(lib.search("kien thuc", false)[0].term, "kiến thức");
         lib.toggle("Kiến thức");
         assert_eq!(lib.export_favorites(), "kiến thức\tknowledge\n");
     }

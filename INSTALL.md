@@ -10,6 +10,6 @@ Keep the Tools and Build checkouts beside this repository.
 cargo zigbuild --offline --locked --release -p dictionary-kindle --target armv7-unknown-linux-musleabihf
 sh scripts/stage.sh armhf
 python3 ../doannt-kindle-build/scripts/package.py --id primitive-dictionary --dir dictionary \
-  --version 0.1.0 --arch armhf --stage build/stage --license LICENSE \
+  --version 0.1.1 --arch armhf --stage build/stage --license LICENSE \
   --docs-license LICENSE-DOCS --install INSTALL.md --out dist
 ```

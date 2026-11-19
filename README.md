@@ -4,7 +4,7 @@
 
 Dictionary is an offline PrimitiveOS app. It opens with a small original English starter glossary and supports your own word lists.
 
-- **Search** matches headwords regardless of letter case and shows prefix matches first.
+- **Search** matches headwords regardless of letter case. Use plain letters to find supported accented words, including Vietnamese headwords.
 - **Save word** adds a definition to Favorites. **Export for Cards** writes the saved headwords and definitions as a two-column TSV file in Documents.
 - **Import** lists UTF-8 TSV files in Documents. Use one word and definition per line, separated by a tab. A third column can hold an example. The import preview shows one entry and the counts of new and duplicate words.
 
