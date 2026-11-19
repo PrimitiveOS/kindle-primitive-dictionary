@@ -1,0 +1,11 @@
+[package]
+name = "dictionary-render"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+dictionary-core.workspace = true
+primitive-app.workspace = true
+primitive-ui.workspace = true
+serde_json = "1"

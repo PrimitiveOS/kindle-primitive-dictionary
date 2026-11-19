@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "id": "primitive-dictionary",
+  "dir": "dictionary",
+  "name": "Dictionary",
+  "subtitle": "Look up words offline",
+  "developer": {
+    "name": "Primitive AI"
+  },
+  "categories": [
+    "utilities"
+  ],
+  "description": "Look up words, read definitions and examples, and save useful terms. Import your own UTF-8 dictionary from a tab-separated file and export favorites for Cards.",
+  "repo": "https://github.com/DoanNguyenTrong/kindle-primitive-dictionary",
+  "licence": "PolyForm-Noncommercial-1.0.0",
+  "source": "hosted",
+  "icon": "icon.png",
+  "changes": {
+    "network": false,
+    "stops_kindle_ui": false,
+    "starts_at_boot": false,
+    "root_filesystem": false,
+    "hooks": false
+  },
+  "versions": []
+}
