@@ -1,6 +1,6 @@
 # Install Dictionary
 
-Set up PrimitiveOS using the [Launcher installation guide](https://github.com/DoanNguyenTrong/kindle-primitive-launcher/blob/main/docs/INSTALL.md). Then open **Store**, find **Dictionary**, and tap **Get**.
+Set up PrimitiveOS using the [Launcher installation guide](https://github.com/PrimitiveOS/kindle-primitive-launcher/blob/main/docs/INSTALL.md). Then open **Store**, find **Dictionary**, and tap **Get**.
 
 ## Build an ARMHF package
 
