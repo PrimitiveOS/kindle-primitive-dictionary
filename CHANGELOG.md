@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4
+
+- The library icon has a dark form, shown in dark mode.
+
 ## 0.1.3
 
 - The result rows respond to taps and reverse black and white while tapped.
