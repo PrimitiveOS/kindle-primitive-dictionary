@@ -306,7 +306,7 @@ impl View {
     }
 
     fn draw_list(&self, canvas: &mut Canvas, width: i32) {
-        header(canvas, "Dictionary", "Done");
+        header(canvas, "Dictionary", "Exit");
         for (i, (label, active)) in [
             ("Search", matches!(self.screen, Screen::Search)),
             ("Favorites", matches!(self.screen, Screen::Favorites)),
