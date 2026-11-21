@@ -159,14 +159,14 @@ dependencies = [
 
 [[package]]
 name = "dictionary-core"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "dictionary-desktop"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "dictionary-core",
  "dictionary-render",
@@ -176,7 +176,7 @@ dependencies = [
 
 [[package]]
 name = "dictionary-kindle"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "dictionary-core",
  "dictionary-render",
@@ -185,7 +185,7 @@ dependencies = [
 
 [[package]]
 name = "dictionary-render"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "dictionary-core",
  "primitive-app",
