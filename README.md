@@ -1,14 +1,25 @@
+<div align="center">
+
+<img src="icon.png" alt="Dictionary icon" width="110">
+
 # Dictionary
 
-**Look up words, read examples, and save useful terms on Kindle.**
+**Look up words offline**
 
-Dictionary is an offline PrimitiveOS app. It opens with a small original English starter glossary and supports your own word lists.
+[![Release](https://img.shields.io/github/v/release/PrimitiveOS/kindle-primitive-dictionary?label=release)](https://github.com/PrimitiveOS/kindle-primitive-dictionary/releases) [![Licence: PolyForm-Noncommercial-1.0.0](https://img.shields.io/badge/licence-PolyForm--Noncommercial--1.0.0-blue)](LICENSE) [![Store downloads](https://img.shields.io/badge/Store%20downloads-23-brightgreen)](https://primitiveos.github.io/kindle-primitive-catalog/v1/index.json)
 
-- **Search** matches headwords regardless of letter case. Use plain letters to find supported accented words, including Vietnamese headwords.
-- **Save word** adds a definition to Favorites. **Export for Cards** writes the saved headwords and definitions as a two-column TSV file in Documents.
-- **Import** lists UTF-8 TSV files in Documents. Use one word and definition per line, separated by a tab. A third column can hold an example. The import preview shows one entry and the counts of new and duplicate words.
+[**Download**](https://github.com/PrimitiveOS/kindle-primitive-dictionary/releases/latest) · [**Install guide**](INSTALL.md) · [**Changelog**](CHANGELOG.md)
 
-An import can contain up to 768 KiB. Dictionary accepts up to 4,000 imported entries. Readable definitions, favorites, and imported words are available between launches and without Wi-Fi.
+</div>
+
+---
+
+Look up words, read definitions and examples, and save useful terms. Import your own UTF-8 dictionary from a tab-separated file and export favorites for Cards.
+
+## Quick start
+
+After setting up PrimitiveOS, open **Store** from Primitive Launcher. Choose **Dictionary** under **Apps**,
+tap **Get**, and open it from the Launcher grid. The [install guide](INSTALL.md) also covers the standalone USB package.
 
 ## Screenshots
 
@@ -18,16 +29,27 @@ An import can contain up to 768 KiB. Dictionary accepts up to 4,000 imported ent
 
 Screenshots are from the desktop simulator.
 
-## Install and develop
+## Highlights
 
-Open **Store** in Launcher, find **Dictionary**, and tap **Get**. See the [installation guide](INSTALL.md) for building an ARMHF package.
+- Look up words, read definitions and examples, and save useful terms.
+- Import your own UTF-8 dictionary from a tab-separated file and export favorites for Cards.
 
-With Tools and Launcher beside this checkout, run:
+## Status
 
-```sh
-cargo test --offline --locked --workspace
-cargo run --offline --locked -p dictionary-desktop -- build/previews
-```
+| Device | Status |
+|---|---|
+| Kindle Oasis 3 (1264 × 1680, firmware 5.18.2) | Tested on hardware |
+
+**Current version: 0.1.2.** Changes are in [CHANGELOG.md](CHANGELOG.md).
+
+## Downloads
+
+**23 downloads** from Store, as of 2026-11-21. Store shows the same count on the app page.
+The count is GitHub downloads of this app's release packages, from the [Store catalog](https://primitiveos.github.io/kindle-primitive-catalog/v1/index.json).
+
+## Documentation
+
+[Install guide](INSTALL.md) · [Changelog](CHANGELOG.md)
 
 ## Licence
 
