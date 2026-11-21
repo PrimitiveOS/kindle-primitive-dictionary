@@ -361,9 +361,11 @@ impl View {
         }
         let count = self.row_count();
         for (i, title) in rows.iter().skip(self.page * count).take(count).enumerate() {
+            // A tap reverses the row, as the kit's rows do.
             let bounds = row(width, i);
-            canvas.card(bounds);
-            canvas.text(bounds.inset(22), title, BODY);
+            let pressed = canvas.control_pressed(bounds, false);
+            canvas.panel(bounds, 22, 2, if pressed { 0 } else { 255 });
+            canvas.text(bounds.inset(22), title, BODY.ink(if pressed { 255 } else { 0 }));
         }
         if self.typing {
             canvas.keyboard(self.query.layer, "Done", None);
